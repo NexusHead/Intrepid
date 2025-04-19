@@ -13,21 +13,29 @@
             color: #ffffff;
         }
         header {
-            background-color: #1f1f1f;
+            background: linear-gradient(to right, #1f1f1f, #333);
             padding: 2rem 0;
             text-align: center;
+            position: relative;
+            z-index: 1000;
         }
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0;
+            color: #b9f2ff; /* Diamond color hint */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         header p {
             font-size: 1.2rem;
             margin: 0.5rem 0;
+            color: #cccccc;
         }
         nav {
             background-color: #333;
             overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav a {
             display: block;
@@ -36,41 +44,132 @@
             padding: 1rem;
             text-decoration: none;
             float: left;
-            width: 20%;
+            width: calc(100% / 6);
             box-sizing: border-box;
             border-right: 1px solid #444;
+            transition: background-color 0.3s;
         }
         nav a:hover {
-            background-color: #555;
+            background-color: #b9f2ff; /* Diamond color hint */
+            color: #121212;
         }
         nav a:last-child {
             border-right: none;
         }
-        .welcome {
-            padding: 3rem 2rem;
+        .hero {
+            background: url('hero-background.jpg') no-repeat center center/cover;
+            color: white;
             text-align: center;
-            background: url('background.jpg') no-repeat center center/cover;
+            padding: 5rem 1rem;
         }
-        .welcome h2 {
-            font-size: 2rem;
+        .hero h2 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #b9f2ff; /* Diamond color hint */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .welcome p {
-            font-size: 1.1rem;
+        .hero p {
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
+            color: #cccccc;
         }
-        .motivation {
+        .hero .cta {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: #b9f2ff; /* Diamond color hint */
+            color: #121212;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        .hero .cta:hover {
+            background-color: #99d6ea;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             padding: 2rem;
-            text-align: center;
             background-color: #1f1f1f;
         }
-        .motivation h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+            padding: 1.5rem;
+            background-color: #333;
+            border-left: 4px solid #b9f2ff; /* Diamond color hint */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-        .motivation p {
+        .feature h3 {
+            margin-top: 0;
+            color: #b9f2ff; /* Diamond color hint */
+        }
+        .feature p {
+            color: #cccccc;
+        }
+        .testimonials {
+            background-color: #1f1f1f;
+            padding: 2rem;
+            text-align: center;
+        }
+        .testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #b9f2ff; /* Diamond color hint */
+        }
+        .testimonial {
+            margin: 1rem auto;
+            max-width: 600px;
+            padding: 1.5rem;
+            background-color: #333;
+            border-left: 4px solid #b9f2ff; /* Diamond color hint */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .testimonial p {
             font-size: 1.1rem;
+            color: #cccccc;
+            font-style: italic;
+        }
+        .articles {
+            padding: 2rem;
+            background-color: #121212;
+            text-align: center;
+        }
+        .articles h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #b9f2ff; /* Diamond color hint */
+        }
+        .article {
+            display: flex;
+            align-items: center;
+            margin: 1rem auto;
+            max-width: 800px;
+            padding: 1.5rem;
+            background-color: #333;
+            border-left: 4px solid #b9f2ff; /* Diamond color hint */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+        .article img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 1rem;
+            border-radius: 5px;
+        }
+        .article div {
+            flex: 1;
+        }
+        .article h3 {
+            margin-top: 0;
+            color: #b9f2ff; /* Diamond color hint */
+        }
+        .article p {
+            color: #cccccc;
             margin: 0.5rem 0;
         }
         footer {
@@ -88,6 +187,9 @@
                 border-right: none;
                 border-bottom: 1px solid #444;
             }
+            .feature, .article {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
@@ -104,9 +206,58 @@
         <a href="#olympic-weightlifting">Olympic Weightlifting</a>
         <a href="#nutrition">Nutrition</a>
     </nav>
-    <div class="welcome" id="home">
-        <h2>Welcome to the Arsenal of the Gym</h2>
+    <div class="hero">
+        <h2>Unlock Your Full Potential</h2>
         <p>Whatever the reason may be, every lifter strives for their physical peak, and that can't be possible without the proper information. Intrepid is built with the purpose of being the command center to any and all lifters. And that if they ever need anything, they come here for that information.</p>
+        <a href="#features" class="cta">Explore Intrepid</a>
+    </div>
+    <div class="features" id="features">
+        <div class="feature">
+            <h3>Powerlifting</h3>
+            <p>Expert guides and tips to maximize your strength and technique in powerlifting.</p>
+        </div>
+        <div class="feature">
+            <h3>Bodybuilding</h3>
+            <p>Comprehensive resources to help you build muscle and sculpt your physique.</p>
+        </div>
+        <div class="feature">
+            <h3>Streetlifting</h3>
+            <p>Unique workouts and challenges to keep your training dynamic and exciting.</p>
+        </div>
+        <div class="feature">
+            <h3>Olympic Weightlifting</h3>
+            <p>Master the snatch and clean & jerk with our in-depth tutorials and programs.</p>
+        </div>
+        <div class="feature">
+            <h3>Nutrition</h3>
+            <p>Nutritional advice tailored to support your training goals and overall health.</p>
+        </div>
+    </div>
+    <div class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <p>"Intrepid has been a game-changer for my training. The resources are top-notch and have helped me reach new heights." </p>
+        </div>
+        <div class="testimonial">
+            <p>"I've never felt more confident in my lifting journey thanks to Intrepid. The community and support are incredible." .</p>
+        </div>
+    </div>
+    <div class="articles">
+        <h2>Featured Articles</h2>
+        <div class="article">
+            <img src="article1.jpg" alt="Article 1">
+            <div>
+                <h3>Mastering the Deadlift</h3>
+                <p>Learn the proper form and techniques to improve your deadlift and avoid common mistakes.</p>
+            </div>
+        </div>
+        <div class="article">
+            <img src="article2.jpg" alt="Article 2">
+            <div>
+                <h3>Nutrition for Muscle Gain</h3>
+                <p>Discover the best nutritional strategies to support muscle growth and recovery.</p>
+            </div>
+        </div>
     </div>
     <div class="motivation">
         <h2>Motivation</h2>
@@ -114,10 +265,10 @@
         <p>"The body achieves what the mind believes."</p>
         <p>"Don't wait until you've reached your goal to be proud of yourself. Be proud of every step you take toward your goal."</p>
         <p>"It does not matter how slowly you go as long as you do not stop."</p>
+        <p>"Success is no accident. It is hard work, perseverance, learning, studying, sacrifice, and most of all, love of what you are doing or learning to do."</p>
     </div>
     <footer>
         <p>Intrepid™. All rights reserved.</p>
     </footer>
 </body>
-  </html>
-          
+</html>
